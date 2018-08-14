@@ -18,21 +18,29 @@ task stringsAndTypes {
         println "Nice work abbreviating the task name"
 
         // TODO: Create a variable named foo and assign it the value 4.2
+        def foo = 4.2
 
         // TODO: Print the value and class of foo
+        println "$foo"
+        println "${foo.class}"
 
         // TODO: Use string interpolation to print the square root of 127
         // HINT: http://docs.oracle.com/javase/7/docs/api/java/lang/Math.html
+        println Math.sqrt(foo)
 
         // TODO: Assign the current date to foo and print it, along with its type
         // HINT:
         // http://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html
+        foo = new Date().format( 'yyyy-MM-dd' )
 
 
         // TODO: Use the `substring` method to extract my name from this string
         def hello = "Hello, Jeremy."
+        foo = hello.substring(7, 13)
+        println(foo);
 
         // TODO: Use `toUpperCase` to capitalize and print my name
+        println(foo.toUpperCase());
 
     }
 }
@@ -42,8 +50,10 @@ task closures {
     doLast {
         // TODO: Declare a closure that takes two arguments and adds them together
         // HINT: http://www.groovy-lang.org/closures.html
+        def twoArgsClosure = {a,b -> a + b}
 
         // TODO: Call your closure with arguments 17 and 25, and print the result
+        println (twoArgsClosure(17,25))
         // Beware that something like `println addTwo 17, 25` is ambiguous
 
     }
@@ -52,12 +62,17 @@ task closures {
 task lists {
     doLast {
         // TODO: Declare a list containing 5 of your favorite candies
+        def candyList = ['tap1', 'tap2', 'tap3', 'tap4', 'tap5']
+
         // HINT: Try searching for "groovy list literal"
 
         // TODO: Create a new list of your candies in all caps
+        def upperCaseList = candyList.each {it.toUpperCase()}
+
         // HINT: http://mrhaki.blogspot.ca/2010/05/groovy-goodness-use-collect-with.html
 
         // TODO: Print each capital candy
+        println upperCaseList.each {println $it}
 
     }
 }
