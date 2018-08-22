@@ -1,6 +1,7 @@
-package com.udacity.gradle.flavorspecificactivity;
+package com.udacity.gradle.flavorspecificactivity.paid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.udacity.gradle.flavorspecificactivity.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.e("Amit", " MAIN ACTIVITY");
+        Log.e("Amit", " PAID MAIN ACTIVITY");
 
     }
 
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
-
+        Intent intent = new Intent(this, PaidJokeActivity.class);
+        startActivity(intent);
     }
 }

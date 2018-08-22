@@ -44,11 +44,11 @@ android {
     }
 
     productFlavors {
-        free {
-            applicationId "com.udacity.gradle.flavorspecificactivity"
-        }
         paid {
             applicationId "com.udacity.gradle.flavorspecificactivity.paid"
+        }
+        free {
+            applicationId "com.udacity.gradle.flavorspecificactivity.free"
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.udacity.gradle.flavorspecificactivity;
+package com.udacity.gradle.flavorspecificactivity.free;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.udacity.gradle.flavorspecificactivity.R;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.e("Amit", " MAIN ACTIVITY");
+        Log.e("Amit", " FREE MAIN ACTIVITY");
 
     }
 
