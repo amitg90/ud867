@@ -5,6 +5,8 @@ import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
+import java.util.Random;
+
 import javax.inject.Named;
 
 /** An endpoint class we are exposing */
@@ -24,7 +26,10 @@ public class MyEndpoint {
     public MyBean sayHi(@Named("name") String name) {
         MyBean response = new MyBean();
         JokeProvider jokeProvider = new JokeProvider();
-        response.setData(jokeProvider.getJoke());
+        Random rand = new Random();
+
+        int  n = rand.nextInt(5);
+        response.setData(jokeProvider.getJoke(n));
 
         return response;
     }
