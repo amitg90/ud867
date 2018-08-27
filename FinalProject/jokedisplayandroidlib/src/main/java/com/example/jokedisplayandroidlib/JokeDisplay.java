@@ -7,7 +7,7 @@ import android.widget.TextView;
 public class JokeDisplay extends AppCompatActivity {
     String joke;
     public static String JOKE_INTENT_STR = "joke_intent_str";
-    public static TextView textView = null;
+    TextView textView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
