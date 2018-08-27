@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.jokedisplayandroidlib.JokeDisplay;
@@ -16,12 +18,15 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-public class EndPointAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+public class EndPointAsyncTask extends AsyncTask<Pair<OnReceiveClickListener, String>, Void, String> {
     private static MyApi myApiService = null;
     public Context context;
+    private OnReceiveClickListener listener = null;
 
     @Override
-    protected String doInBackground(Pair<Context, String>... pairs) {
+    protected String doInBackground(Pair<OnReceiveClickListener, String>... pairs) {
+        /* trigger progress bar */
+
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -40,7 +45,7 @@ public class EndPointAsyncTask extends AsyncTask<Pair<Context, String>, Void, St
             myApiService = builder.build();
         }
 
-        context = pairs[0].first;
+        listener = pairs[0].first;
         String name = pairs[0].second;
 
         try {
@@ -52,11 +57,6 @@ public class EndPointAsyncTask extends AsyncTask<Pair<Context, String>, Void, St
 
     @Override
     protected void onPostExecute(String s) {
-
-        Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(context, JokeDisplay.class);
-        intent.putExtra(JokeDisplay.JOKE_INTENT_STR, s);
-        context.startActivity(intent);
+        listener.onAsyncTaskDone(s);
     }
 }
